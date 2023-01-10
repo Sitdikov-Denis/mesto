@@ -1,9 +1,8 @@
 let closeButton = document.querySelector('.profile-form__toggle');
 let editButton = document.querySelector('.profile__edit-button');
-
-let editForm = document.querySelector('.profile-form__form')
-
 let popup = document.querySelector('.profile-form');
+
+let editForm = document.querySelector('.profile-form__form');
 
 let currencyName = document.querySelector('.profile__name');
 let currencyDescription = document.querySelector('.profile__description');
@@ -23,8 +22,7 @@ function popupClose() {
 
 function changeName(evt) {
   evt.preventDefault();
-  let nameInp = fieldName.value
-  currencyName.textContent = nameInp;
+  currencyName.textContent = fieldName.value;
   currencyDescription.textContent = fieldDescription.value;
   popupClose();
 }
