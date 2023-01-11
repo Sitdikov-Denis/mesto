@@ -16,6 +16,6 @@
 
 ## Автор
 
-Денис Ситдиков(https://github.com/Sitdikov-Denis)
+Денис Ситдиков - [GitHub](https://github.com/Sitdikov-Denis)
 
 
