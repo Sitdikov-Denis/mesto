@@ -7,19 +7,6 @@
 </head>
 <body class="body">
   <div class="page">
-    <section class= "profile-form">
-      
-      <div class="profile-form__container">
-        <h2 class="profile-form__title">Редактировать профиль</h2>
-        <form class="profile-form__form" name="popupForm">
-          <input class="profile-form__input-field" type="text" name="name" id="profileName">
-          <input class="profile-form__input-field" type="text" name="description" id="profileDescription">
-          <button class="profile-form__save-button" type="submit">Сохранить</button>
-        </form>
-        <button class="profile-form__toggle" type="button">
-        </button>
-      </div>
-    </section>
     <header class="header">
       <img class="header__logo" src="./images/header/header-logo.svg" alt="Лого">
     </header>
@@ -42,73 +29,38 @@
         </button>
       </section>
       <section class="elements">
-        <div class="element">
-          <img class="element__photo" src="./images/elements/dog.jpg" alt="Собакин">
-          <div class="element__text-block">
-            <h2 class="element__title">Собакин</h2>
-            <button class="element__like-button">
-              <img class="element__like" src="./images/elements/profile-like.svg" alt="Лайк">
-            </button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__photo" src="./images/elements/autumn.jpg" alt="Осень">
-          <div class="element__text-block">
-            <h2 class="element__title">Осень</h2>
-            <button class="element__like-button">
-              <img class="element__like" src="./images/elements/profile-like.svg" alt="Лайк">
-            </button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__photo" src="./images/elements/norway.jpg" alt="Норвегия">
-          <div class="element__text-block">
-            <h2 class="element__title">Норвегия</h2>
-            <button class="element__like-button">
-              <img class="element__like" src="./images/elements/profile-like.svg" alt="Лайк">
-            </button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__photo" src="./images/elements/cat.jpg" alt="Котики">
-          <div class="element__text-block">
-            <h2 class="element__title">Котики</h2>
-            <button class="element__like-button">
-              <img class="element__like" src="./images/elements/profile-like.svg" alt="Лайк">
-            </button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__photo" src="./images/elements/mountain.jpg" alt="Горы">
-          <div class="element__text-block">
-            <h2 class="element__title">Горы</h2>
-            <button class="element__like-button">
-              <img class="element__like" src="./images/elements/profile-like.svg" alt="Лайк">
-            </button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__photo" src="./images/elements/nord.jpg" alt="Северное сияние">
-          <div class="element__text-block">
-            <h2 class="element__title">Северное сияние</h2>
-            <button class="element__like-button">
-              <img class="element__like" src="./images/elements/profile-like.svg" alt="Лайк">
-            </button>
-          </div>
-        </div>
       </section>
       <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
       </footer>
+
+      <section class= "profile-form">
+        <div class="profile-form__container">
+          <h2 class="profile-form__title">Редактировать профиль</h2>
+          <form class="profile-form__form" name="popupForm">
+            <input class="profile-form__input-field" type="text" name="name" id="profileName">
+            <input class="profile-form__input-field" type="text" name="description" id="profileDescription">
+            <button class="profile-form__save-button" type="submit">Сохранить</button>
+          </form>
+          <button class="profile-form__toggle" type="button">
+          </button>
+        </div>
+      </section>
     </main>
   </div>
 
   <template id = 'element-template'>
-    <article class = 'element'>
-      <img class = 'element-photo'>
-    </article>
-
+    <div class="element">
+      <img class="element__photo" src="" alt="">
+      <div class="element__text-block">
+        <h2 class="element__title"></h2>
+        <button class="element__like-button">
+          <img class="element__like" src="./images/elements/profile-like.svg" alt="Лайк">
+        </button>
+      </div>
+    </div>
   </template>
-  <script src="js/script.js"></script>
+  <script src="./js/script.js"></script>
 </body>
 </html>
+
