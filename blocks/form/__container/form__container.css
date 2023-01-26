@@ -1,4 +1,4 @@
-.profile-form__container {
+.form__container {
   width: 430px;
   height: 330px;
   background: #FFFFFF;
@@ -9,7 +9,7 @@
 
 
 @media screen and (max-width: 650px)  {
-  .profile-form__container {
+  .form__container {
     width: 282px;
     height: 322px;
   }

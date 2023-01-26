@@ -34,15 +34,28 @@
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
       </footer>
 
-      <section class= "profile-form">
-        <div class="profile-form__container">
-          <h2 class="profile-form__title">Редактировать профиль</h2>
-          <form class="profile-form__form" name="popupForm">
-            <input class="profile-form__input-field" type="text" name="name" id="profileName">
-            <input class="profile-form__input-field" type="text" name="description" id="profileDescription">
-            <button class="profile-form__save-button" type="submit">Сохранить</button>
+      <section class= "form" id = "profileForm">
+        <div class="form__container">
+          <h2 class="form__title">Редактировать профиль</h2>
+          <form class="form__form" name="popupEditForm">
+            <input class="form__input-field" type="text" name="name" id="profileName">
+            <input class="form__input-field" type="text" name="description" id="profileDescription">
+            <button class="form__save-button" type="submit">Сохранить</button>
           </form>
-          <button class="profile-form__toggle" type="button">
+          <button class="form__toggle" type="button">
+          </button>
+        </div>
+      </section>
+
+      <section class= "form" id = "addCardForm">
+        <div class="form__container">
+          <h2 class="form__title">Новое место</h2>
+          <form class="form__form" name="popupAddCardForm">
+            <input class="form__input-field" type="text" name="name" id="placeTitle">
+            <input class="form__input-field" type="text" name="description" id="placeLink">
+            <button class="form__save-button" type="submit">Сохранить</button>
+          </form>
+          <button class="form__toggle" type="button">
           </button>
         </div>
       </section>
