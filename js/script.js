@@ -1,17 +1,17 @@
 // кнопка редактирования профиля
 let editButton = document.querySelector('.profile__edit-button');
 // кнопка добавления новлй карточки
-let addButton = document.querySelector('.profile__add-button')
+let addButton = document.querySelector('.profile__add-button');
 
-let editForm = document.querySelector('.form__form')
+let editForm = document.querySelector('.form__form');
 // попап редактирования
 let popupEdit = document.getElementById('profileForm');
 // попап добавления 
-let popupAdd = document.getElementById('addCardForm')
+let popupAdd = document.getElementById('addCardForm');
 // кнопка закрытия попапа редактирования
-let closeEditFormButton = popupEdit.querySelector('form__toggle')
+let closeEditFormButton = popupEdit.querySelector('.form__toggle');
 // кнопка закрытия попапа добавления
-let closeAddFormButton = popupAdd.querySelector('form__toggle')
+let closeAddFormButton = popupAdd.querySelector('.form__toggle');
 
 
 let currentName = document.querySelector('.profile__name');
@@ -26,7 +26,8 @@ function openPopup(popup) {
   fieldDescription.value = currentDescription.textContent;
 }
 
-function closePopup(popup) {
+function closePopup(evt) {
+  const popup = evt.target.closest('.form');
   popup.classList.remove('form_active');
 }
 
@@ -76,9 +77,13 @@ const addCard = (element) => {
 }
 
 initialCards.forEach((element) => {
-  addCard(element)
+  addCard(element);
 })
 
-editButton.addEventListener('click', popupOpen);
-closeButton.addEventListener('click', popupClose);
+addButton.addEventListener('click', () => openPopup(popupAdd));
+editButton.addEventListener('click', () => openPopup(popupEdit));
+closeEditFormButton.addEventListener('click', (evt) => closePopup(evt));
+closeAddFormButton.addEventListener('click', (evt) => closePopup(evt));
 popupEdit.addEventListener('submit', changeName);
+
+
