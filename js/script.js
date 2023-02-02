@@ -20,10 +20,23 @@ let currentDescription = document.querySelector('.profile__description');
 let fieldName = document.querySelector('#profileName');
 let fieldDescription = document.querySelector('#profileDescription');
 
+let fieldTitle = document.getElementById('placeTitle');
+let fieldLink = document.getElementById('placeLink')
+
 function openPopup(popup) {
   popup.classList.add('form_active');
-  fieldName.value = currentName.textContent;
-  fieldDescription.value = currentDescription.textContent;
+  const popupId = popup.id
+
+  switch(popupId) {
+    case 'profileForm':
+      fieldName.value = currentName.textContent;
+      fieldDescription.value = currentDescription.textContent;
+    case 'addCardForm':
+      fieldTitle.value = 'Название';
+      fieldLink.value = 'Ссылка на картинку'
+
+  }
+  
 }
 
 function closePopup(evt) {
@@ -35,17 +48,13 @@ function changeName(evt) {
   evt.preventDefault();
   currentName.textContent = fieldName.value;
   currentDescription.textContent = fieldDescription.value;
-  closePopup();
+  closePopup(evt);
 }
 
 const elementsContainer = document.querySelector('.elements');
 const elementTemplate = document.querySelector('#element-template').content;
 
 const initialCards = [
-  {
-    name: 'Собакин',
-    link: './images/elements/dog.jpg'
-  },
   {
     name: 'Осень',
     link: './images/elements/autumn.jpg'
@@ -65,7 +74,11 @@ const initialCards = [
   {
     name: 'Северное сияние',
     link: './images/elements/nord.jpg'
-  }
+  },
+  {
+    name: 'Собакин',
+    link: './images/elements/dog.jpg'
+  },
 ];
 
 const addCard = (element) => {
@@ -73,7 +86,18 @@ const addCard = (element) => {
   elementCard.querySelector('.element__title').textContent = element.name;
   elementCard.querySelector('.element__photo').src = element.link;
   elementCard.querySelector('.element__photo').alt = element.name;
-  elementsContainer.append(elementCard);
+  elementsContainer.prepend(elementCard);
+}
+
+const addNewCard = (evt) => {
+  evt.preventDefault();
+  let newCard = {
+    name: fieldTitle.value,
+    link: fieldLink.value,
+  }
+  addCard(newCard);
+
+  closePopup(evt);
 }
 
 initialCards.forEach((element) => {
@@ -82,8 +106,9 @@ initialCards.forEach((element) => {
 
 addButton.addEventListener('click', () => openPopup(popupAdd));
 editButton.addEventListener('click', () => openPopup(popupEdit));
-closeEditFormButton.addEventListener('click', (evt) => closePopup(evt));
-closeAddFormButton.addEventListener('click', (evt) => closePopup(evt));
+closeEditFormButton.addEventListener('click', closePopup);
+closeAddFormButton.addEventListener('click', closePopup);
 popupEdit.addEventListener('submit', changeName);
+popupAdd.addEventListener('submit', addNewCard)
 
 
