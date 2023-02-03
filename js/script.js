@@ -4,6 +4,8 @@ let editButton = document.querySelector('.profile__edit-button');
 let addButton = document.querySelector('.profile__add-button');
 
 let editForm = document.querySelector('.form__form');
+
+
 // попап редактирования
 let popupEdit = document.getElementById('profileForm');
 // попап добавления 
@@ -32,8 +34,8 @@ function openPopup(popup) {
       fieldName.value = currentName.textContent;
       fieldDescription.value = currentDescription.textContent;
     case 'addCardForm':
-      fieldTitle.value = 'Название';
-      fieldLink.value = 'Ссылка на картинку'
+      fieldTitle.value = '';
+      fieldLink.value = ''
 
   }
   
@@ -87,16 +89,18 @@ const addCard = (element) => {
   elementCard.querySelector('.element__photo').src = element.link;
   elementCard.querySelector('.element__photo').alt = element.name;
   elementsContainer.prepend(elementCard);
+  return elementCard;
 }
 
 const addNewCard = (evt) => {
   evt.preventDefault();
-  let newCard = {
+  const cardData = {
     name: fieldTitle.value,
     link: fieldLink.value,
   }
-  addCard(newCard);
-
+  const newCard = addCard(cardData);
+  newCard.querySelector('.element__delete-button').addEventListener('click', deleteCard);
+  newCard.querySelector('.element__like-button').addEventListener('click', addLike);
   closePopup(evt);
 }
 
@@ -104,11 +108,36 @@ initialCards.forEach((element) => {
   addCard(element);
 })
 
+let deleteButtons = document.querySelectorAll('.element__delete-button');
+let likeButtons = document.querySelectorAll('.element__like-button');
+
+console.log(deleteButtons)
+console.log(likeButtons)
+
+const deleteCard = (evt) => {
+  const targetCard = evt.target.closest('.element');
+  console.log(targetCard);
+  targetCard.remove();
+}
+
+const addLike = (evt) => {
+  evt.target.classList.toggle('element__like-button_active')
+}
+
+deleteButtons.forEach(button => {
+  button.addEventListener('click', deleteCard)
+})
+
+
+likeButtons.forEach(button => {
+  button.addEventListener('click', addLike)
+})
+
 addButton.addEventListener('click', () => openPopup(popupAdd));
 editButton.addEventListener('click', () => openPopup(popupEdit));
 closeEditFormButton.addEventListener('click', closePopup);
 closeAddFormButton.addEventListener('click', closePopup);
 popupEdit.addEventListener('submit', changeName);
-popupAdd.addEventListener('submit', addNewCard)
+popupAdd.addEventListener('submit', addNewCard);
 
 
