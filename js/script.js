@@ -1,49 +1,53 @@
 // кнопка редактирования профиля
-let editButton = document.querySelector('.profile__edit-button');
+const editButton = document.querySelector('.profile__edit-button');
 // кнопка добавления новлй карточки
-let addButton = document.querySelector('.profile__add-button');
+const addButton = document.querySelector('.profile__add-button');
 
-let editForm = document.querySelector('.form__form');
+const editForm = document.querySelector('.form');
 
 
 // попап редактирования
-let popupEdit = document.getElementById('profileForm');
+const popupEdit = document.getElementById('profileForm');
 // попап добавления 
-let popupAdd = document.getElementById('addCardForm');
+const popupAdd = document.getElementById('addCardForm');
 // кнопка закрытия попапа редактирования
-let closeEditFormButton = popupEdit.querySelector('.form__toggle');
+const closeEditFormButton = popupEdit.querySelector('.popup__close-button');
 // кнопка закрытия попапа добавления
-let closeAddFormButton = popupAdd.querySelector('.form__toggle');
+const closeAddFormButton = popupAdd.querySelector('.popup__close-button');
 
 
-let currentName = document.querySelector('.profile__name');
-let currentDescription = document.querySelector('.profile__description');
+const currentName = document.querySelector('.profile__name');
+const currentDescription = document.querySelector('.profile__description');
 
-let fieldName = document.querySelector('#profileName');
-let fieldDescription = document.querySelector('#profileDescription');
+const fieldName = document.querySelector('#profileName');
+const fieldDescription = document.querySelector('#profileDescription');
 
-let fieldTitle = document.getElementById('placeTitle');
-let fieldLink = document.getElementById('placeLink')
+const fieldTitle = document.getElementById('placeTitle');
+const fieldLink = document.getElementById('placeLink');
 
-function openPopup(popup) {
-  popup.classList.add('form_active');
+const popupPhotoView = document.getElementById('viewPhoto');
+const popupPhoto = popupPhotoView.querySelector('.popup__photo');
+const popupPhotoCapture = popupPhotoView.querySelector('.popup__photo-caption');
+const buttonClosePopupPhoto = popupPhotoView.querySelector('.popup__close-button');
+
+function openPopup(popup, evt) {
+  popup.classList.add('popup_active');
   const popupId = popup.id
 
   switch(popupId) {
     case 'profileForm':
       fieldName.value = currentName.textContent;
       fieldDescription.value = currentDescription.textContent;
-    case 'addCardForm':
-      fieldTitle.value = '';
-      fieldLink.value = ''
-
+    case 'viewPhoto':
+      popupPhoto.src = evt.target.src;
+      popupPhotoCapture.textContent = evt.target.alt;
   }
-  
+    
 }
 
 function closePopup(evt) {
-  const popup = evt.target.closest('.form');
-  popup.classList.remove('form_active');
+  const popup = evt.target.closest('.popup');
+  popup.classList.remove('popup_active');
 }
 
 function changeName(evt) {
@@ -88,6 +92,7 @@ const addCard = (element) => {
   elementCard.querySelector('.element__title').textContent = element.name;
   elementCard.querySelector('.element__photo').src = element.link;
   elementCard.querySelector('.element__photo').alt = element.name;
+  elementCard.querySelector('.element__photo').addEventListener('click', (evt) => openPopup(popupPhotoView, evt))
   elementsContainer.prepend(elementCard);
   return elementCard;
 }
@@ -110,9 +115,6 @@ initialCards.forEach((element) => {
 
 let deleteButtons = document.querySelectorAll('.element__delete-button');
 let likeButtons = document.querySelectorAll('.element__like-button');
-
-console.log(deleteButtons)
-console.log(likeButtons)
 
 const deleteCard = (evt) => {
   const targetCard = evt.target.closest('.element');
@@ -137,6 +139,7 @@ addButton.addEventListener('click', () => openPopup(popupAdd));
 editButton.addEventListener('click', () => openPopup(popupEdit));
 closeEditFormButton.addEventListener('click', closePopup);
 closeAddFormButton.addEventListener('click', closePopup);
+buttonClosePopupPhoto.addEventListener('click', closePopup)
 popupEdit.addEventListener('submit', changeName);
 popupAdd.addEventListener('submit', addNewCard);
 
