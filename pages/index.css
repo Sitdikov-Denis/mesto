@@ -5,6 +5,7 @@
 @import url(../blocks/page/page.css);
 
 @import url(../blocks/form/form.css);
+@import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__input-field/form__input-field.css);
 @import url(../blocks/form/__input-field/_placeholder/form__input-field_placeholder.css);
 @import url(../blocks/form/__submit-button/form__submit-button.css);
