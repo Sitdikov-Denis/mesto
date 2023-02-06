@@ -14,48 +14,73 @@
       <section class="profile">
         <div class="profile__user-block">
           <div class="profile__avatar">
-            <img class="profile__photo" src="./images/profile/profile-image.jpg" alt="Аватар">
+            <img class="profile__photo" src="./images/elements/profile-image.jpg" alt="Аватар">
           </div>
           <div class="profile__text-info">
             <h1 class="profile__name">Денис Ситдиков</h1>
             <button class="profile__edit-button">
-              <img class="profile__edit-button-img" src="./images/profile/profile-edit-button.svg" alt="Редактирование профиля">
+              <img class="profile__edit-button-img" src="./images/buttons/profile-edit-button.svg" alt="Редактирование профиля">
             </button>
             <p class="profile__description">Developer</p>
           </div>
         </div>
         <button class="profile__add-button">
-          <img class="profile__add-button-img" src="./images/profile/profile-sign-add.svg" alt="+">
+          <img class="profile__add-button-img" src="./images/buttons/profile-sign-add.svg" alt="+">
         </button>
       </section>
       <section class="elements">
       </section>
       <footer class="footer">
-        <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+        <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
       </footer>
 
-      <section class= "profile-form">
-        <div class="profile-form__container">
-          <h2 class="profile-form__title">Редактировать профиль</h2>
-          <form class="profile-form__form" name="popupForm">
-            <input class="profile-form__input-field" type="text" name="name" id="profileName">
-            <input class="profile-form__input-field" type="text" name="description" id="profileDescription">
-            <button class="profile-form__save-button" type="submit">Сохранить</button>
+      <section class="popup" id="profileForm">
+        <div class="popup__container">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <form class="form" name="popupEditForm">
+            <div class="form__input">
+              <input class="form__input-field" type="text" name="name" id="profileName">
+              <input class="form__input-field" type="text" name="description" id="profileDescription">
+            </div>
+            <button class="form__submit-button" type="submit">Сохранить</button>
           </form>
-          <button class="profile-form__toggle" type="button">
-          </button>
         </div>
+        <button class="popup__close-button" type="button">
+        </button>
+      </section>
+
+      <section class= "popup" id = "addCardForm">
+        <div class="popup__container">
+          <h2 class="popup__title">Новое место</h2>
+          <form class="form" name="popupAddCardForm">
+            <div class="form__input">
+              <input class="form__input-field" type="text" name="name" id="placeTitle" placeholder="Название">
+              <input class="form__input-field" type="text" name="description" id="placeLink" placeholder="Ссылка на картинку">
+            </div>
+            <button class="form__submit-button" type="submit">Сохранить</button>
+          </form>
+        </div>
+        <button class="popup__close-button" type="button">
+        </button>
+      </section>
+
+      <section class="popup" id = "viewPhoto">  
+        <button class="popup__close-button" type = "button">
+        </button>
+        <img src="" alt="" class="popup__photo">
+        <h3 class="popup__photo-caption"></h3>
       </section>
     </main>
   </div>
 
   <template id = 'element-template'>
     <div class="element">
+      <button class = "element__delete-button" type = "button"></button>
       <img class="element__photo" src="" alt="">
       <div class="element__text-block">
         <h2 class="element__title"></h2>
         <button class="element__like-button">
-          <img class="element__like" src="./images/elements/profile-like.svg" alt="Лайк">
+          <img class="element__like" src="./images/buttons/elements-like.svg" alt="Лайк">
         </button>
       </div>
     </div>
