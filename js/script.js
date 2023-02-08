@@ -30,6 +30,19 @@ const popupPhoto = popupPhotoView.querySelector('.popup__photo');
 const popupPhotoCapture = popupPhotoView.querySelector('.popup__photo-caption');
 const buttonClosePopupPhoto = popupPhotoView.querySelector('.popup__close-button');
 
+
+const closeByEsc = (evt) => {
+  if (evt.key === 'Escape') {
+    closePopup()
+  }
+}
+
+const closeByOverlay = (popup, evt) => {
+  if (evt.target === popup) {
+    closePopup()
+  }
+}
+
 function openPopup(popup, evt) {
   popup.classList.add('popup_active');
   const popupId = popup.id;
@@ -42,12 +55,17 @@ function openPopup(popup, evt) {
       popupPhoto.src = evt.target.src;
       popupPhotoCapture.textContent = evt.target.alt;
   };
+
+  document.addEventListener('keydown', closeByEsc);
+  popup.addEventListener('click', (evt) => closeByOverlay(popup, evt));
     
 };
 
-function closePopup(evt) {
-  const popup = evt.target.closest('.popup');
+function closePopup() {
+  const popup = document.querySelector('.popup_active')
   popup.classList.remove('popup_active');
+  document.removeEventListener('keydown', closeByEsc)
+  document.removeEventListener('click', (evt) => closeByOverlay(popup, evt))
 };
 
 function changeName(evt) {
@@ -123,7 +141,6 @@ const addLike = (evt) => {
   evt.target.classList.toggle('element__like-button_active');
 };
 
-
 document.body.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('element__like')) {
     addLike(evt);
@@ -132,18 +149,20 @@ document.body.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('element__delete-button')) {
     deleteCard(evt);
   };
+
+  if (evt.target.classList.contains('popup__close-button')) {
+    closePopup()
+  }
 });
 
-addButton.addEventListener('click', () => openPopup(popupAddElem));
-editButton.addEventListener('click', () => openPopup(popupEdit));
-closeEditFormButton.addEventListener('click', closePopup);
-closeAddFormButton.addEventListener('click', closePopup);
-buttonClosePopupPhoto.addEventListener('click', closePopup);
+
+addButton.addEventListener('click', (evt) => openPopup(popupAddElem, evt));
+editButton.addEventListener('click', (evt) => openPopup(popupEdit, evt));
 popupEdit.addEventListener('submit', (evt) => {
   changeName(evt);
-  closePopup(evt);
+  closePopup();
 });
 popupAddElem.addEventListener('submit', (evt) => {
   addNewCard(evt);
-  closePopup(evt);
+  closePopup();
 });
