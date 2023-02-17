@@ -19,11 +19,11 @@ const closeAddFormButton = popupAddElem.querySelector('.popup__close-button');
 const currentName = document.querySelector('.profile__name');
 const currentDescription = document.querySelector('.profile__description');
 
-const fieldName = document.getElementById('profileName');
-const fieldDescription = document.getElementById('profileDescription');
+const fieldName = document.getElementById('name-input');
+const fieldDescription = document.getElementById('description-input');
 
-const fieldTitle = document.getElementById('placeTitle');
-const fieldLink = document.getElementById('placeLink');
+const fieldTitle = document.getElementById('title-input');
+const fieldLink = document.getElementById('url-input');
 
 const popupPhotoView = document.getElementById('viewPhoto');
 const popupPhoto = popupPhotoView.querySelector('.popup__photo');
