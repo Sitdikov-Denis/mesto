@@ -33,13 +33,13 @@ const buttonClosePopupPhoto = popupPhotoView.querySelector('.popup__close-button
 
 const closeByEsc = (evt) => {
   if (evt.key === 'Escape') {
-    closePopup()
+    closePopup();
   }
 }
 
 const closeByOverlay = (popup, evt) => {
   if (evt.target === popup) {
-    closePopup()
+    closePopup();
   }
 }
 
