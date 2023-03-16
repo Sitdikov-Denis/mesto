@@ -5,7 +5,6 @@ const addButton = document.querySelector('.profile__add-button');
 
 const editForm = document.querySelector('.form');
 
-
 // попап редактирования
 const popupEdit = document.getElementById('profileForm');
 // попап добавления 
@@ -37,9 +36,11 @@ const closeByEsc = (evt) => {
   }
 }
 
-const closeByOverlay = (popup, evt) => {
-  if (evt.target === popup) {
-    closePopup();
+const closeByOverlay = (evt) => {
+  if (evt.target === evt.currentTarget) {
+    closePopup()
+    console.log(evt.target)
+    console.log(evt.currentTarget)
   }
 }
 
@@ -63,7 +64,7 @@ function openPopup(popup, evt) {
   };
 
   document.addEventListener('keydown', closeByEsc);
-  popup.addEventListener('click', (evt) => closeByOverlay(popup, evt));
+  popup.addEventListener('click', closeByOverlay);
   
   const formList = Array.from(document.querySelectorAll('.form'));
   formList.forEach(form => {
@@ -71,13 +72,13 @@ function openPopup(popup, evt) {
     const inputFields = form.querySelectorAll('.form__input-field')
     inputFields.forEach(inputField => {
       if (inputField.value) {
-        isValid(form, inputField)
+        isValid(form, inputField, selectors)
       }
       else {
-        hideInputError(form, inputField)
+        hideInputError(form, inputField, selectors)
       }
     })
-    tuggleButtonState(inputFields, buttonElement);
+    tuggleButtonState(inputFields, buttonElement, selectors);
   })
 };
 
@@ -85,7 +86,7 @@ function closePopup() {
   const popup = document.querySelector('.popup_active')
   popup.classList.remove('popup_active');
   document.removeEventListener('keydown', closeByEsc)
-  document.removeEventListener('click', (evt) => closeByOverlay(popup, evt))
+  document.removeEventListener('click', closeByOverlay)
 };
 
 function changeName(evt) {
@@ -185,5 +186,4 @@ popupEdit.addEventListener('submit', (evt) => {
 popupAddElem.addEventListener('submit', (evt) => {
   addNewCard(evt);
   closePopup();
-
 });
