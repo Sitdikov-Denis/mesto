@@ -165,4 +165,5 @@ popupEdit.addEventListener('submit', (evt) => {
 popupAddElem.addEventListener('submit', (evt) => {
   addNewCard(evt);
   closePopup();
+
 });

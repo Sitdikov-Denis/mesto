@@ -27,20 +27,19 @@ const isValid = (formElement, inputElement) => {
     }
 };
 
-const setEventListeners = (formElement) => {
+function setEventListeners(formElement) {
     const inputList = Array.from(formElement.querySelectorAll('.form__input-field'));
-    const buttonElement = formElement.querySelector('form__submit-button');
+    const buttonElement = formElement.querySelector('.form__submit-button');
     
-
     inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', () => {
             isValid(formElement, inputElement);
-            tuggleButtonState(inputElement, buttonElement);
+            tuggleButtonState(inputList, buttonElement);
         });
     });
 };
 
-const enableValidation = () => {
+function enableValidation() {
     const formList = Array.from(document.querySelectorAll('.form'));
 
     formList.forEach(formElement => {
@@ -50,17 +49,18 @@ const enableValidation = () => {
 
 enableValidation();
 
-const hasInvalidInput = (inputList) => {
-    return inputList.some(inputElement => {
-        return !inputElement.validity.valid
-    })
+function hasInvalidInput(inputList) {
+    return inputList.some((inputElement) => !inputElement.validity.valid)
 };
 
-const tuggleButtonState = (inputList, buttonElement) => {
+function tuggleButtonState (inputList, buttonElement) {
     if (hasInvalidInput(inputList)) {
         buttonElement.classList.add('form__submit-button_inactive');
+        buttonElement.setAttribute('disabled', true);
+        console.log('toogle')
     }
     else {
         buttonElement.classList.remove('form__submit-button_inactive');
+        buttonElement.removeAttribute('disabled');
     }
 }
