@@ -19,16 +19,29 @@ const closeAddFormButton = popupAddElem.querySelector('.popup__close-button');
 const currentName = document.querySelector('.profile__name');
 const currentDescription = document.querySelector('.profile__description');
 
-const fieldName = document.getElementById('profileName');
-const fieldDescription = document.getElementById('profileDescription');
+const fieldName = document.getElementById('name-input');
+const fieldDescription = document.getElementById('description-input');
 
-const fieldTitle = document.getElementById('placeTitle');
-const fieldLink = document.getElementById('placeLink');
+const fieldTitle = document.getElementById('title-input');
+const fieldLink = document.getElementById('url-input');
 
 const popupPhotoView = document.getElementById('viewPhoto');
 const popupPhoto = popupPhotoView.querySelector('.popup__photo');
 const popupPhotoCapture = popupPhotoView.querySelector('.popup__photo-caption');
 const buttonClosePopupPhoto = popupPhotoView.querySelector('.popup__close-button');
+
+
+const closeByEsc = (evt) => {
+  if (evt.key === 'Escape') {
+    closePopup();
+  }
+}
+
+const closeByOverlay = (popup, evt) => {
+  if (evt.target === popup) {
+    closePopup();
+  }
+}
 
 function openPopup(popup, evt) {
   popup.classList.add('popup_active');
@@ -38,16 +51,41 @@ function openPopup(popup, evt) {
     case 'profileForm':
       fieldName.value = currentName.textContent;
       fieldDescription.value = currentDescription.textContent;
+      break
     case 'viewPhoto':
       popupPhoto.src = evt.target.src;
       popupPhotoCapture.textContent = evt.target.alt;
+      break
+    case 'addCardForm':
+      fieldTitle.value = '';
+      fieldLink.value = '';
+      break
   };
-    
+
+  document.addEventListener('keydown', closeByEsc);
+  popup.addEventListener('click', (evt) => closeByOverlay(popup, evt));
+  
+  const formList = Array.from(document.querySelectorAll('.form'));
+  formList.forEach(form => {
+    const buttonElement = form.querySelector('.form__submit-button');
+    const inputFields = form.querySelectorAll('.form__input-field')
+    inputFields.forEach(inputField => {
+      if (inputField.value) {
+        isValid(form, inputField)
+      }
+      else {
+        hideInputError(form, inputField)
+      }
+    })
+    tuggleButtonState(inputFields, buttonElement);
+  })
 };
 
-function closePopup(evt) {
-  const popup = evt.target.closest('.popup');
+function closePopup() {
+  const popup = document.querySelector('.popup_active')
   popup.classList.remove('popup_active');
+  document.removeEventListener('keydown', closeByEsc)
+  document.removeEventListener('click', (evt) => closeByOverlay(popup, evt))
 };
 
 function changeName(evt) {
@@ -123,7 +161,6 @@ const addLike = (evt) => {
   evt.target.classList.toggle('element__like-button_active');
 };
 
-
 document.body.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('element__like')) {
     addLike(evt);
@@ -132,18 +169,21 @@ document.body.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('element__delete-button')) {
     deleteCard(evt);
   };
+
+  if (evt.target.classList.contains('popup__close-button')) {
+    closePopup()
+  }
 });
 
-addButton.addEventListener('click', () => openPopup(popupAddElem));
-editButton.addEventListener('click', () => openPopup(popupEdit));
-closeEditFormButton.addEventListener('click', closePopup);
-closeAddFormButton.addEventListener('click', closePopup);
-buttonClosePopupPhoto.addEventListener('click', closePopup);
+
+addButton.addEventListener('click', (evt) => openPopup(popupAddElem, evt));
+editButton.addEventListener('click', (evt) => openPopup(popupEdit, evt));
 popupEdit.addEventListener('submit', (evt) => {
   changeName(evt);
-  closePopup(evt);
+  closePopup();
 });
 popupAddElem.addEventListener('submit', (evt) => {
   addNewCard(evt);
-  closePopup(evt);
+  closePopup();
+
 });
