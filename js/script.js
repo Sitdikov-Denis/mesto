@@ -51,14 +51,34 @@ function openPopup(popup, evt) {
     case 'profileForm':
       fieldName.value = currentName.textContent;
       fieldDescription.value = currentDescription.textContent;
+      break
     case 'viewPhoto':
       popupPhoto.src = evt.target.src;
       popupPhotoCapture.textContent = evt.target.alt;
+      break
+    case 'addCardForm':
+      fieldTitle.value = '';
+      fieldLink.value = '';
+      break
   };
 
   document.addEventListener('keydown', closeByEsc);
   popup.addEventListener('click', (evt) => closeByOverlay(popup, evt));
-    
+  
+  const formList = Array.from(document.querySelectorAll('.form'));
+  formList.forEach(form => {
+    const buttonElement = form.querySelector('.form__submit-button');
+    const inputFields = form.querySelectorAll('.form__input-field')
+    inputFields.forEach(inputField => {
+      if (inputField.value) {
+        isValid(form, inputField)
+      }
+      else {
+        hideInputError(form, inputField)
+      }
+    })
+    tuggleButtonState(inputFields, buttonElement);
+  })
 };
 
 function closePopup() {

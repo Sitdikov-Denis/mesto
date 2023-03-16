@@ -50,14 +50,13 @@ function enableValidation() {
 enableValidation();
 
 function hasInvalidInput(inputList) {
-    return inputList.some((inputElement) => !inputElement.validity.valid)
+    return Array.from(inputList).some((inputElement) => !inputElement.validity.valid)
 };
 
 function tuggleButtonState (inputList, buttonElement) {
     if (hasInvalidInput(inputList)) {
         buttonElement.classList.add('form__submit-button_inactive');
         buttonElement.setAttribute('disabled', true);
-        console.log('toogle')
     }
     else {
         buttonElement.classList.remove('form__submit-button_inactive');
