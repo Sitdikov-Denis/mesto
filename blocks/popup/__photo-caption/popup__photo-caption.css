@@ -1,6 +1,7 @@
 .popup__photo-caption {
-  font-size: 12px;
-  line-height: 15px;
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 400;
   grid-column: 2;
   grid-row: 3;
   text-overflow: ellipsis;
