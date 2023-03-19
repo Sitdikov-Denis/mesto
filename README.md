@@ -1,21 +1,23 @@
-# Проект: Место
+# Project: Mesto
 
-### Обзор
+### Review
 
-* Проектная работа №6 "Сайт для размещения фотографий посещенных интересных мест нашей необъятной Родины."
+* This is the interactive page that allows users to add,
+delete, and like photos. The form fields have been configured with
+validation to ensure that users enter valid information.
 
-### Технологии
+### Technologies
 
-* HTML
+*HTML
 * CSS
 * JavaScript
 
-## Проект на githubPages
+## Project on githubPages
 
 [Mesto](https://sitdikov-denis.github.io/mesto/)
 
-## Автор
+## Author
 
-Денис Ситдиков - [GitHub](https://github.com/Sitdikov-Denis)
+Denis Sitdikov - [GitHub](https://github.com/Sitdikov-Denis)
 
 
