@@ -6,6 +6,9 @@
   line-height: 0;
   transition: opacity 0.2s ease-out;
   cursor: pointer;
+  width: 22px;
+  height: 18px;
+  background-image: url(../../../images/buttons/elements-like.svg);
 }
 
 .element__like-button:hover {

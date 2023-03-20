@@ -236,13 +236,16 @@ class Card {
     this._element.querySelector('.element__title').textContent = this._title;
     this._element.querySelector('.element__photo').src = this._image;
     this._deleteButton = this._element.querySelector('.element__delete-button')
+    console.log(this._deleteButton)
     this._likeButton = this._element.querySelector('.element__like-button')
-
+    console.log(this._likeButton)
+    this._setEventListeners()
     return this._element
   }
 
   _deleteCard() {
     this._element.remove();
+    console.log('delete')
   };
 
   _addLike() {
@@ -263,8 +266,9 @@ class Card {
 
 initialCards.forEach(initialCard => {
   const card = new Card(initialCard, '#element-template');
-  // console.log(card)
+
   const cardElement = card._generateCard();
+  
   
   document.querySelector('.elements').append(cardElement);
 })
