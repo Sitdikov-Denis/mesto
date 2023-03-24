@@ -14,7 +14,6 @@ const closeEditFormButton = popupEdit.querySelector('.popup__close-button');
 // кнопка закрытия попапа добавления
 const closeAddFormButton = popupAddElem.querySelector('.popup__close-button');
 
-
 const currentName = document.querySelector('.profile__name');
 const currentDescription = document.querySelector('.profile__description');
 
@@ -58,7 +57,7 @@ const initialCards = [
   },
 ];
 
-class Card {
+export class Card {
   constructor(data, cardSelector) {
     this._title = data.name;
     this._image = data.link;
@@ -122,17 +121,17 @@ initialCards.forEach(initialCard => {
 })
 
 
-
 const closeByEsc = (evt) => {
   if (evt.key === 'Escape') {
     closePopup();
   }
 }
 
+
 const closeByOverlay = (evt) => {
   if (evt.target === evt.currentTarget) {
     closePopup()
-    console.log(evt.target)
+    console.log(evt.target) 
     console.log(evt.currentTarget)
   }
 }
