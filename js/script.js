@@ -57,7 +57,8 @@ const initialCards = [
   },
 ];
 
-export class Card {
+
+class Card {
   constructor(data, cardSelector) {
     this._title = data.name;
     this._image = data.link;
@@ -84,7 +85,7 @@ export class Card {
 
   _deleteCard() {
     this._element.remove();
-    console.log('delete')
+    console.log('delete');
   };
 
   _addLike() {
@@ -144,15 +145,15 @@ function openPopup(popup, evt) {
     case 'profileForm':
       fieldName.value = currentName.textContent;
       fieldDescription.value = currentDescription.textContent;
-      break
+      break;
     case 'viewPhoto':
       popupPhoto.src = evt.target.src;
       popupPhotoCapture.textContent = evt.target.alt;
-      break
+      break;
     case 'addCardForm':
       fieldTitle.value = '';
       fieldLink.value = '';
-      break
+      break;
   };
 
   document.addEventListener('keydown', closeByEsc);
@@ -250,6 +251,7 @@ popupEdit.addEventListener('submit', (evt) => {
   changeName(evt);
   closePopup();
 });
+
 popupAddElem.addEventListener('submit', (evt) => {
   addNewCard(evt);
   closePopup();
