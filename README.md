@@ -14,7 +14,7 @@ validation to ensure that users enter valid information.
 
 ## Project on githubPages
 
-[Mesto](https://sitdikov-denis.github.io/mesto/)
+[Mesto](https://sitdikov-denis.github.io/mesto/index.html)
 
 ## Author
 
