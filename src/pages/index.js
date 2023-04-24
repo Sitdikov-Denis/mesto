@@ -58,7 +58,7 @@ const popupEditProfile = new PopupWithForm({
 const popupAddCard = new PopupWithForm({
   validator: formAddCardValidator,
   handleFormSubmit: (formData) => {
-    const card = createCard(formData, popupPhotoView)
+    const card = createCard({name: formData.name, link: formData.description}, popupPhotoView)
     const cardElement = card.generateCard();
     cardListSection.addItem(cardElement);
   }
