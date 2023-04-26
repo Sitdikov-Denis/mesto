@@ -2,37 +2,37 @@
 
 
 // исходный массив карточек
-const autumn = new URL('../images/elements/autumn.jpg', import.meta.url);
+const baikal = new URL('../images/elements/baikal.jpg', import.meta.url);
 const norway = new URL('../images/elements/norway.jpg', import.meta.url);
-const cat = new URL('../images/elements/cat.jpg', import.meta.url)
+const london = new URL('../images/elements/london.jpg', import.meta.url)
 const mountains = new URL('../images/elements/mountain.jpg', import.meta.url)
-const nord = new URL('../images/elements/nord.jpg', import.meta.url)
-const dog = new URL('../images/elements/dog.jpg', import.meta.url)
+const sokorta = new URL('../images/elements/sokorta.jpeg', import.meta.url)
+const paris = new URL('../images/elements/paris.jpg', import.meta.url)
 
 export const initialCards = [
   {
-    name: 'Осень',
-    link: autumn
+    name: 'Байкал',
+    link: baikal
   },
   {
     name: 'Норвегия',
     link: norway
   },
   {
-    name: 'Котики',
-    link: cat
+    name: 'Лондон',
+    link: london
   },
   {
-    name: 'Горы',
+    name: 'Радужные горы',
     link: mountains
   },
   {
-    name: 'Северное сияние',
-    link: nord
+    name: 'Сокорта',
+    link: sokorta
   },
   {
-    name: 'Собакин',
-    link: dog
+    name: 'Париж',
+    link: paris
   },
 ];
 
