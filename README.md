@@ -8,9 +8,10 @@ validation to ensure that users enter valid information.
 
 ### Technologies
 
-*HTML
-* CSS
+* HTML5
+* CSS3
 * JavaScript
+* Webpack
 
 ## Project on githubPages
 
