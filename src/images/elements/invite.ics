@@ -1,0 +1,64 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VTIMEZONE
+TZID:Europe/Moscow
+X-LIC-LOCATION:Europe/Moscow
+BEGIN:STANDARD
+TZOFFSETFROM:+0300
+TZOFFSETTO:+0300
+TZNAME:MSK
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Moscow:20230427T140000
+DTEND;TZID=Europe/Moscow:20230427T150000
+DTSTAMP:20230426T164155Z
+ORGANIZER;CN=elina.m@immigram.io:mailto:elina.m@immigram.io
+UID:7ln7gs91pc952trs6irubqk25f@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=mikhail.a@immigram.io;X-NUM-GUESTS=0:mailto:mikhail.a@immigram.io
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;CN=elina.m@immigram.io;X-NUM-GUESTS=0:mailto:elina.m@immigram.io
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=sitdikov.denis10@yandex.ru;X-NUM-GUESTS=0:mailto:sitdikov.denis10@y
+ andex.ru
+X-MICROSOFT-CDO-OWNERAPPTID:-427379690
+CREATED:20230426T164154Z
+DESCRIPTION:-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~::~:~::-\nJoin Zoom Meeting\nhttps://immigram-io.zoom.us/j/
+ 82656658162?pwd=eHJIdHo1c0t6czBBdlRUVStEcFlIUT09 (ID: 82656658162\, passcod
+ e: 877413)\n\nJoin by phone\n(FI) +358 9 72522471 (passcode: 877413)\n(US) 
+ +1 507-473-4847 (passcode: 877413)\n\nJoining instructions: https://www.goo
+ gle.com/url?q=https://applications.zoom.us/addon/invitation/detail?meetingU
+ uid%3Dmn6IjbL4Rui3qj5TEIM8OA%253D%253D%26signature%3D942c94517915aca6815a02
+ 34d62425457f4778647a4db5a7ba814ebbb58082b3%26v%3D1&sa=D&source=calendar&usg
+ =AOvVaw0aC1X7Z05vz45X5f451ixg\n\n------------<br /><a href="https://www.goo
+ gle.com/url?q=https://support.zoom.us/hc/en-us/articles/360020187492-Zoom-f
+ or-GSuite-add-on-Troubleshooting%23h_01FRGZTWJYRGRDMPQW4N041QF7&amp\;sa=D&a
+ mp\;source=calendar&amp\;usg=AOvVaw3pOlmJKYg-DG37_G4Qn9Q2" target="_blank">
+ Zoom for G Suite Add-On Help</a><br />------------<br /><br />Meeting host:
+  <a href="mailto:elina.m@immigram.io" target="_blank">elina.m@immigram.io</
+ a><br /><br />Join Zoom Meeting: <br /><a href="https://www.google.com/url?
+ q=https://immigram-io.zoom.us/j/82656658162?pwd%3DeHJIdHo1c0t6czBBdlRUVStEc
+ FlIUT09&amp\;sa=D&amp\;source=calendar&amp\;usg=AOvVaw3LhEYjXRj5R-6enM7JNOm
+ J" target="_blank">https://immigram-io.zoom.us/j/82656658162?pwd=eHJIdHo1c0
+ t6czBBdlRUVStEcFlIUT09</a>\n\nPlease do not edit this section.\n-::~:~::~:~
+ :~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::
+ -
+LAST-MODIFIED:20230426T164154Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Tech Interview - Denis Sitdikov
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:This is an event reminder
+TRIGGER:-P0DT0H10M0S
+END:VALARM
+END:VEVENT
+END:VCALENDAR

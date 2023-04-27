@@ -7,7 +7,7 @@ const norway = new URL('../images/elements/norway.jpg', import.meta.url);
 const london = new URL('../images/elements/london.jpg', import.meta.url)
 const mountains = new URL('../images/elements/mountain.jpg', import.meta.url)
 const sokorta = new URL('../images/elements/sokorta.jpeg', import.meta.url)
-const paris = new URL('../images/elements/paris.jpg', import.meta.url)
+const praga = new URL('../images/elements/praga.jpg', import.meta.url)
 
 export const initialCards = [
   {
@@ -31,8 +31,8 @@ export const initialCards = [
     link: sokorta
   },
   {
-    name: 'Париж',
-    link: paris
+    name: 'Прага',
+    link: praga
   },
 ];
 
