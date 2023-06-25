@@ -4,7 +4,7 @@ export default class Card {
     this._imageLink = data.link;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
-  }
+  };
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
@@ -12,16 +12,16 @@ export default class Card {
       .querySelector('.element')
       .cloneNode(true);
     return cardElement;
-  }
+  };
   _openPhotoViewPopup(){
-    this._handleCardClick(this._name, this._imageLink)
-  }
+    this._handleCardClick(this._name, this._imageLink);
+  };
   _deleteCard() {
     this._element.remove();
-  }
+  };
   _toggleLike() {
    this._likeButton.classList.toggle('element__like-button_active');
-  }
+  };
   _setEventListeners() {
     this._photo.addEventListener('click', () => {
       this._openPhotoViewPopup();
@@ -43,5 +43,5 @@ export default class Card {
     this._photo.src = this._imageLink;
     this._photo.alt = this._name;
     return this._element;
-  }
-}
+  };
+};

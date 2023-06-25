@@ -46,7 +46,7 @@ export const initialCards = [
   inactiveButtonClass: 'form__submit-button_inactive',
   inputErrorClass: 'form__input-field_error',
   errorClass: 'form__input-error_active'
-}
+};
 
 // форма редактирования
  export const formEditProfile = document.querySelector('#profileForm').querySelector('.form');
@@ -68,11 +68,11 @@ export const initialCards = [
  export const fieldDescription = document.querySelector('#description-input');
 
 // селекторы
- export const ELEMENTS_CONTAINER_SELECTOR = '.elements'
- export const CARD_TEMPLATE_SELECTOR = '#element-template'
- export const POPUP_WITH_PHOTO_SELECTOR = '#viewPhoto'
- export const POPUP_EDIT_FORM_SELECTOR = '#profileForm'
- export const POPUP_ADD_CARD_FORM_SELECTOR = '#addCardForm'
- export const POPUP_PHOTO_SELECTOR = '.popup__photo'
- export const POPUP_PHOTO_CAPTION_SELECTOR = '.popup__photo-caption'
+ export const ELEMENTS_CONTAINER_SELECTOR = '.elements';
+ export const CARD_TEMPLATE_SELECTOR = '#element-template';
+ export const POPUP_WITH_PHOTO_SELECTOR = '#viewPhoto';
+ export const POPUP_EDIT_FORM_SELECTOR = '#profileForm';
+ export const POPUP_ADD_CARD_FORM_SELECTOR = '#addCardForm';
+ export const POPUP_PHOTO_SELECTOR = '.popup__photo';
+ export const POPUP_PHOTO_CAPTION_SELECTOR = '.popup__photo-caption';
 

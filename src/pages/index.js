@@ -33,24 +33,24 @@ const userInfo = new UserInfo(userInfoSelectors);
 const cardListSection = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = createCard(item, popupPhotoView)
+    const card = createCard(item, popupPhotoView);
     const cardElement = card.generateCard();
-    cardListSection.addItem(cardElement)
+    cardListSection.addItem(cardElement);
   }
 }, ELEMENTS_CONTAINER_SELECTOR);
 
 // создание объектов валидатора
 const formEditProfileValidator = new FormValidator(formEditProfile, currentParams);
-formEditProfileValidator.enableValidation()
+formEditProfileValidator.enableValidation();
 
 const formAddCardValidator = new FormValidator(formAddCard, currentParams);
-formAddCardValidator.enableValidation()
+formAddCardValidator.enableValidation();
 
 // создание попапа редактирования профиля
 const popupEditProfile = new PopupWithForm({
   validator: formEditProfileValidator,
   handleFormSubmit: (formData) => {
-    userInfo.setUserInfo(formData.name, formData.description)
+    userInfo.setUserInfo(formData.name, formData.description);
   }
 }, POPUP_EDIT_FORM_SELECTOR);
 
@@ -75,13 +75,13 @@ const popupPhotoView = new PopupWithImage(
 editButton.addEventListener('click', () => {
   popupEditProfile.open();
   const info = userInfo.getUserInfo();
-  fieldName.value = info.name
+  fieldName.value = info.name;
   fieldDescription.value = info.description;
 });
 
 // слушатель на кнопке добавления новой карточки
 addButton.addEventListener('click', () => {
-  popupAddCard.open()
+  popupAddCard.open();
 });
 
 cardListSection.renderItems();

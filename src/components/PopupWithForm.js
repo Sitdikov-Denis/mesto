@@ -6,7 +6,7 @@ export default class PopupWithForm extends Popup {
     this._validator = validator;
     this._handleFormSubmit = handleFormSubmit;
     this._form = this._popup.querySelector('.form');
-  }
+  };
 
   _getInputValues() {
     const inputList = Array.from(this._validator._formElement.querySelectorAll(this._validator._validationParams.inputSelector));
@@ -15,7 +15,7 @@ export default class PopupWithForm extends Popup {
       this._element[input.name] = input.value;
     });
     return this._element;
-  }
+  };
 
   setEventListeners() {
     this._form.addEventListener('submit', (evt) => {
@@ -25,13 +25,13 @@ export default class PopupWithForm extends Popup {
       this.close();
     });
     super.setEventListeners();
-  }
+  };
   close() {
     super.close();
-  }
+  };
   open() {
     this._form.reset();
-    this._validator.resetPopupValidationState()
+    this._validator.resetPopupValidationState();
     super.open();
-  }
-}
+  };
+};
