@@ -51,6 +51,9 @@ export const initialCards = [
 // форма редактирования
  export const formEditProfile = document.querySelector('#profileForm').querySelector('.form');
 
+ // форма редактирования фото профиля
+ export const formEditPhotoProfile = document.querySelector('#profileImageForm').querySelector('.form');
+
 // форма добавления
  export const formAddCard = document.querySelector('#addCardForm').querySelector('.form');
 
@@ -67,6 +70,12 @@ export const initialCards = [
  export const fieldName = document.querySelector('#name-input');
  export const fieldDescription = document.querySelector('#description-input');
 
+ // аватар
+ export const profilePhoto = document.querySelector('.profile__photo');
+
+ // оверлей аватара
+ export const profilePhotoOverlay = document.querySelector('.profile__photo-block');
+ 
 // селекторы
  export const ELEMENTS_CONTAINER_SELECTOR = '.elements';
  export const CARD_TEMPLATE_SELECTOR = '#element-template';
@@ -75,4 +84,5 @@ export const initialCards = [
  export const POPUP_ADD_CARD_FORM_SELECTOR = '#addCardForm';
  export const POPUP_PHOTO_SELECTOR = '.popup__photo';
  export const POPUP_PHOTO_CAPTION_SELECTOR = '.popup__photo-caption';
+ export const POPUP_PHOTO_PROFILE_SELECTOR = '#profileImageForm';
 

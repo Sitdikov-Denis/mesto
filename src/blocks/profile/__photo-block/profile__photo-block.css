@@ -1,0 +1,14 @@
+.profile__photo-block {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  position: relative;
+}
+
+.profile__photo-block:hover .profile__photo-overlay {
+  opacity: 1;
+}
+
+
+
