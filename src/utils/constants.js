@@ -85,4 +85,9 @@ export const initialCards = [
  export const POPUP_PHOTO_SELECTOR = '.popup__photo';
  export const POPUP_PHOTO_CAPTION_SELECTOR = '.popup__photo-caption';
  export const POPUP_PHOTO_PROFILE_SELECTOR = '#profileImageForm';
+ export const POPUP_DELETE_CARD_SELECTOR = '#deleteImagePopup'
+
+ // параметры для Api
+export const BASE_ROUTE = 'https://mesto.nomoreparties.co/v1/cohort-42';
+export const TOKEN = '03a4523e-62a7-4ee4-ae37-dcf3604823ce';
 
