@@ -103,6 +103,18 @@
         <img src="<%=require('./images/elements/profile-image.jpg')%>" alt="Описание изображения" class="popup__photo">
         <h3 class="popup__photo-caption"></h3>
       </section>
+
+      <div class= "popup" id="deleteImagePopup">
+        <button class="popup__close-button" type="button">
+        </button>
+        <div class="popup__container">
+          <h2 class="popup__title">Вы уверены?</h2>
+          <form class="form" name="popupAddCardForm" novalidate>
+            <button id="confirmationButton" class="form__submit-button" type="submit">Да</button>
+          </form>
+        </div>
+      </div>
+
     </main>
   </div>
 
