@@ -59,11 +59,18 @@ const cardListSection = new Section({
 api.getInitialCards()
   .then((result) => {
       cardListSection.renderItems(result)
-  }
-  )
-  .catch((err) => {
-    console.log(err); // выведем ошибку в консоль
-  });
+    })
+    .catch((err) => {
+      console.log(err); // выведем ошибку в консоль
+    });
+  
+  api.getUserInfo()
+    .then((result) => {
+      userInfo.setUserInfo(result.name, result.about, result.avatar)
+    })
+    .catch((err) => {
+      console.log(err); // выведем ошибку в консоль
+    });
 
 // создание объектов валидатора
 const formEditProfileValidator = new FormValidator(formEditProfile, currentParams);
@@ -87,7 +94,13 @@ const popupEditProfilePhoto = new PopupWithForm({
 const popupEditProfile = new PopupWithForm({
   validator: formEditProfileValidator,
   handleFormSubmit: (formData) => {
-    userInfo.setUserInfo(formData.name, formData.description);
+    api.patchUserInfo(formData.name, formData.description)
+      .then((result) => {
+        userInfo.setUserInfo(formData.name, formData.description, profilePhoto.src)
+      })
+      .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+      });
   }
 }, POPUP_EDIT_FORM_SELECTOR);
 
