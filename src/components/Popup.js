@@ -10,7 +10,7 @@ export default class Popup {
     };
   };
 
-  _closeOverlay= (evt) => {
+  _closeOverlay = (evt) => {
     if (evt.target === evt.currentTarget) {
       this.close();
     };
@@ -21,7 +21,7 @@ export default class Popup {
     document.addEventListener('keydown',  this._handleKeyDown);
   };
 
-  close = () => {
+  close() {
     this._popup.classList.remove('popup_active');
     document.removeEventListener('keydown',  this._handleKeyDown);
   };
