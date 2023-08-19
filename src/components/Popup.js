@@ -28,8 +28,4 @@ export default class Popup {
     document.removeEventListener('keydown',  this._handleKeyDown);
   };
 
-  // setEventListeners() {
-  //   this._popup.addEventListener('click', this._closeOverlay);
-  //   this._popupCloseButton.addEventListener('click', this.close);
-  // };
 };

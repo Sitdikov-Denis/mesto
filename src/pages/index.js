@@ -115,9 +115,17 @@ const popupDeleteCard = new PopupWithConfirmation({
 const popupAddCard = new PopupWithForm({
   validator: formAddCardValidator,
   handleFormSubmit: (formData) => {
-    const card = createCard(formData, popupPhotoView, popupDeleteCard)
-    const cardElement = card.generateCard();
-    cardListSection.addItem(cardElement);
+    api.addNewCard(formData)
+      .then((result) => {
+        console.log(result)
+        //TODO надо ли вставлять в разметку на странице до обновления??
+        const card = createCard(formData, popupPhotoView, popupDeleteCard)
+      const cardElement = card.generateCard();
+      cardListSection.addItem(cardElement);
+      })
+      .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+      });
   }
 }, POPUP_ADD_CARD_FORM_SELECTOR);
 
