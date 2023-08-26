@@ -39,6 +39,25 @@ export default class Api {
         return Promise.reject(`Ошибка  патч инфы: ${res.status}`);
       });
   }
+
+  patchUserPhoto(link) {
+    const queryParams = {
+      method: 'PATCH',
+      headers: this._queryParams.headers,
+      body: JSON.stringify({
+        avatar: link,
+      })
+    }
+
+    return fetch(`${this._params.baseRoute}/users/me/avatar`, queryParams)
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка  патч фотки: ${res.status}`);
+      });
+  }
+
   addNewCard(card) {
     const queryParams = {
       method: 'POST',
@@ -56,4 +75,32 @@ export default class Api {
         return Promise.reject(`Ошибка пост карточки: ${res.status}`);
       });
     }
+
+    addLike(id) {
+      const queryParams = {
+        method: 'PUT',
+        headers: this._queryParams.headers
+      }
+      return fetch(`${this._params.baseRoute}/cards/likes/${id}`, queryParams)
+        .then(res => {
+          if (res.ok) {
+            return res.json();
+          }
+          return Promise.reject(`Ошибка пост карточки: ${res.status}`);
+        });
+    }
+    deleteCard(id) {
+      const queryParams = {
+        method: 'DELETE',
+        headers: this._queryParams.headers
+      }
+      return fetch(`${this._params.baseRoute}/cards/${id}`, queryParams)
+        .then(res => {
+          if (res.ok) {
+            return res.json();
+          }
+          return Promise.reject(`Ошибка делейт карточки: ${res.status}`);
+        });
+    }
+  
   }

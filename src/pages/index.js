@@ -25,14 +25,36 @@ import {
   formEditPhotoProfile,
   profilePhotoOverlay,
   POPUP_DELETE_CARD_SELECTOR,
-  TOKEN, BASE_ROUTE,
+  TOKEN, BASE_ROUTE, CARD_TEMPLATE_SELECTOR,
 } from "../utils/constants.js";
-
-import {createCard} from "../utils/utils.js";
 
 import "./index.css";
 import PopupWithConfirmation from "../components/PopupConfirmation";
 import Api from "../components/Api";
+import Card from "../components/Card";
+
+// создание карточки
+function createCard(item, popupPhoto, popupDeletePhoto){
+  const card = new Card({
+    data: item,
+    handleCardClick: (name, link) => {
+      popupPhoto.open(name, link)
+    },
+    handleDeleteIconClick: (cardID, card) => {
+      popupDeletePhoto.open(cardID, card)
+    },
+    handleLikeButtonClick: (id) => {
+      api.addLike(id)
+        .then((result) => {
+          console.log(result)
+        })
+        .catch((err) => {
+          console.log(err); // выведем ошибку в консоль
+        });
+    }
+  }, userInfo.getID(), CARD_TEMPLATE_SELECTOR);
+  return card;
+}
 
 // создание экземпляра класса информации о пользователе
 const userInfo = new UserInfo(userInfoSelectors);
@@ -45,6 +67,15 @@ const api = new Api({
     'Content-Type': 'application/json'
   }
 });
+
+api.getUserInfo()
+  .then((result) => {
+    userInfo.setUserInfo(result.name, result.about, result.avatar, result._id)
+    console.log(result._id)
+  })
+  .catch((err) => {
+    console.log(err); // выведем ошибку в консоль
+  });
 
 // заполнение страницы исходным массивом
 const cardListSection = new Section({
@@ -59,14 +90,6 @@ const cardListSection = new Section({
 api.getInitialCards()
   .then((result) => {
       cardListSection.renderItems(result)
-    })
-    .catch((err) => {
-      console.log(err); // выведем ошибку в консоль
-    });
-  
-  api.getUserInfo()
-    .then((result) => {
-      userInfo.setUserInfo(result.name, result.about, result.avatar)
     })
     .catch((err) => {
       console.log(err); // выведем ошибку в консоль
@@ -86,7 +109,13 @@ formEditProfileImageValidator.enableValidation()
 const popupEditProfilePhoto = new PopupWithForm({
   validator: formEditProfileImageValidator,
   handleFormSubmit: (formData) => {
-    profilePhoto.src = formData.photo;
+    handleDeleteIconClick
+    .then((result) => {
+      profilePhoto.src = result.avatar;
+    })
+    .catch((err) => {
+      console.log(err); // выведем ошибку в консоль
+    });
   }
 }, POPUP_PHOTO_PROFILE_SELECTOR);
 
@@ -96,7 +125,7 @@ const popupEditProfile = new PopupWithForm({
   handleFormSubmit: (formData) => {
     api.patchUserInfo(formData.name, formData.description)
       .then((result) => {
-        userInfo.setUserInfo(formData.name, formData.description, profilePhoto.src)
+        userInfo.setUserInfo(result.name, result.about, result.avatar)
       })
       .catch((err) => {
         console.log(err); // выведем ошибку в консоль
@@ -106,8 +135,15 @@ const popupEditProfile = new PopupWithForm({
 
 // создание попапа удаления карточки
 const popupDeleteCard = new PopupWithConfirmation({
-  handleConfirmation: () => {
-    console.log("hola")
+  handleConfirmation: (cardID, card) => {
+    api.deleteCard(cardID)
+      .then((result) => {
+        console.log(result)
+        card.remove();
+      })
+      .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+      });
   }
 }, POPUP_DELETE_CARD_SELECTOR);
 
@@ -117,11 +153,9 @@ const popupAddCard = new PopupWithForm({
   handleFormSubmit: (formData) => {
     api.addNewCard(formData)
       .then((result) => {
-        console.log(result)
-        //TODO надо ли вставлять в разметку на странице до обновления??
-        const card = createCard(formData, popupPhotoView, popupDeleteCard)
-      const cardElement = card.generateCard();
-      cardListSection.addItem(cardElement);
+        const card = createCard(result, popupPhotoView, popupDeleteCard)
+        const cardElement = card.generateCard();
+        cardListSection.addItem(cardElement)
       })
       .catch((err) => {
         console.log(err); // выведем ошибку в консоль
@@ -154,7 +188,6 @@ profilePhotoOverlay.addEventListener('click', () => {
   popupEditProfilePhoto.open()
 });
 
-cardListSection.renderItems();
 popupPhotoView.setEventListeners();
 popupEditProfile.setEventListeners();
 popupAddCard.setEventListeners();
