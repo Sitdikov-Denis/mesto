@@ -4,26 +4,28 @@ export default class Api {
     this._queryParams = {};
     this._queryParams.headers = this._params.headers;
   }
+
+  _getResponseData(res) {
+    if (!res.ok) {
+      return Promise.reject(`Ошибка: ${res.status}`);
+    }
+    return res.json();
+  } 
+
   getInitialCards() {
-    return fetch(`${this._params.baseRoute}/cards`, this._queryParams).then(
-      (res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    );
+    return fetch(`${this._params.baseRoute}/cards`, this._queryParams)
+      .then(res => {
+        return this._getResponseData(res)
+      });
   }
+
   getUserInfo() {
-    return fetch(`${this._params.baseRoute}/users/me`, this._queryParams).then(
-      (res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    );
+    return fetch(`${this._params.baseRoute}/users/me`, this._queryParams)
+      .then(res => {
+        return this._getResponseData(res)
+      });
   }
+
   patchUserInfo(name, about) {
     const queryParams = {
       method: "PATCH",
@@ -33,14 +35,10 @@ export default class Api {
         about: about,
       }),
     };
-    return fetch(`${this._params.baseRoute}/users/me`, queryParams).then(
-      (res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка  патч инфы: ${res.status}`);
-      }
-    );
+    return fetch(`${this._params.baseRoute}/users/me`, queryParams)
+      .then(res => {
+        return this._getResponseData(res)
+      });
   }
 
   patchUserPhoto(link) {
@@ -51,15 +49,10 @@ export default class Api {
         avatar: link,
       }),
     };
-
-    return fetch(`${this._params.baseRoute}/users/me/avatar`, queryParams).then(
-      (res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка  патч фотки: ${res.status}`);
-      }
-    );
+    return fetch(`${this._params.baseRoute}/users/me/avatar`, queryParams)
+      .then(res => {
+        return this._getResponseData(res)
+      });
   }
 
   addNewCard(card) {
@@ -71,43 +64,42 @@ export default class Api {
         link: card.link,
       }),
     };
-    return fetch(`${this._params.baseRoute}/cards`, queryParams).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка пост карточки: ${res.status}`);
+    return fetch(`${this._params.baseRoute}/cards`, queryParams)
+    .then(res => {
+      return this._getResponseData(res)
     });
-  }
+}
 
-  handleLikeButton(id, isLiked) {
-    if (!isLiked) {
-      const queryParams = {
-        method: "PUT",
-        headers: this._queryParams.headers,
-      };
-      return fetch(
-        `${this._params.baseRoute}/cards/likes/${id}`,
-        queryParams
-      ).then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка лайк карточки: ${res.status}`);
-      });
-    } else {
-      const queryParams = {
-        method: "DELETE",
-        headers: this._queryParams.headers,
-      };
-      return fetch(
-        `${this._params.baseRoute}/cards/likes/${id}`,
-        queryParams
-      ).then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка удаление лайка карточки: ${res.status}`);
-      });
-    }
+deleteCard(id) {
+  const queryParams = {
+    method: 'DELETE',
+    headers: this._queryParams.headers
   }
+  return fetch(`${this._params.baseRoute}/cards/${id}`, queryParams)
+    .then(res => {
+      return this._getResponseData(res)
+    });
+}
+
+handleLikeButton(id, isLiked) {
+  if (!isLiked) {
+    const queryParams = {
+      method: 'PUT',
+      headers: this._queryParams.headers
+    }
+    return fetch(`${this._params.baseRoute}/cards/likes/${id}`, queryParams)
+      .then(res => {
+        return this._getResponseData(res)
+      });
+  } else {
+    const queryParams = {
+      method: 'DELETE',
+      headers: this._queryParams.headers
+    }
+    return fetch(`${this._params.baseRoute}/cards/likes/${id}`, queryParams)
+      .then(res => {
+        return this._getResponseData(res)
+      });
+  }
+}
 }

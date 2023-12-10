@@ -11,6 +11,9 @@
   justify-content: center;
   transition: opacity 0.2s ease-out;
   cursor: pointer;
+  background-image: url(../../../images/profile/profile-edit-button.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 
 }
 

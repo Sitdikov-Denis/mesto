@@ -5,12 +5,12 @@ export default class UserInfo {
     this._currentName = document.querySelector(this._nameSelector);
     this._currentDescription = document.querySelector(this._descriptionSelector);
     this._avatar = document.querySelector('.profile__photo');
-  };
+  }
 
   getUserInfo() {
     this._infoObject = {name: this._currentName.textContent, description: this._currentDescription.textContent};
     return this._infoObject;
-  };
+  }
 
   setUserInfo(name, description, photo, id) {
     this._currentName.textContent = name;
@@ -18,7 +18,8 @@ export default class UserInfo {
     this._avatar.src = photo;
     this._id = id;
   }
+
   getID() {
-    return this._id
+    return this._id;
   }
-};
+}
